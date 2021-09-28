@@ -1,5 +1,3 @@
-
-
 # Milvus Github workflow guidelines
 
 Generally, we follow the "fork-and-pull" Git workflow.
@@ -65,4 +63,3 @@ After step 6, if your encounter any problems, please start over from step 2. Or,
 >
 
 ## General git workflow
-

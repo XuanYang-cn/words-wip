@@ -12,11 +12,11 @@
 
 ### Fork - pull 
 
-<img src="fork-and-pull.png" style="zoom: 30%;" />
+<img src="../assets/fork-and-pull.png" style="zoom: 30%;" />
 
 ### Local Git
 
-<img src="local-develop-steps.png" style="zoom:33%;" />
+<img src="../assets/local-develop-steps.png" style="zoom:33%;" />
 
 ## PR 合并条件
 
