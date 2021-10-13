@@ -1,10 +1,16 @@
 # Week 10.11 - 10.17
 
+## Reminder
+
+1. Don't hardcode CMAKE_INSTALL_LIBDIR
+
+## Todo - Speech PPT and video recording (due 10.20)
+
 ## Todo - Review
 
-1. Knowhere compilation review.
+1. Knowhere compilation review. **DONE**
 
-2. Arrow compilation review.
+2. Arrow compilation review. **DONE**
 
 3. PyMilvus tf/pytorch review.
 
@@ -15,9 +21,18 @@
 
 - Reviewed delete implementation (8050)
 
+**10.12 Tue.**
+
+- Meeting about PyMilvus
+
+- Use config as parameters (9707)
+
+- Yunmei's issue: Insert 10,000,000 in 10,000 batch, the result num_entites is lesser than 10 million
+    - In the middle of the insert, pulsar is out-of-service for a while, and some messages seemed not produced successfully.
+
 ----------------------------
 
-### Arrow compilation review
+### Arrow compilation review **DONE**
 **10.11 Mon.**
 
 - Figuring out what's this PR and why do we need it. a + b needs in memory arrow
@@ -26,10 +41,19 @@
 
 ----------------------------
 
-### Knowhere compilation review
+### Knowhere compilation review **DONE**
+**10.13 Wed.**
+- Work arround `set(CMAKE_INSTALL_LIBDIR lib)` for centOS compilation, fix later.
+
 **10.12 Tue.**
 
-- Review on centOS
+- Setting up centOS 7 environment is a hard work, but successfully make all on CentOS 7.
+
+- `make test-cpp` failed because openblas is installed on `lib64`, but other libraries is installed on `lib`. We only add `lib` into `$LD_LIBRARY_PATH`
+
+    - It's a long way to fix, the easiest might be recording this and change the centOS Dockerfile line 42, from `/usr/local/lib` into `/usr/local/lib64`.
+
+    - So it's recommended to download OpenBLAS on the system.
 
 **10.11 Mon.**
 
@@ -66,3 +90,29 @@ and I need to double check on **Ubuntu18.04 and CentOS7**.
 3. Write PyMilvus contributing doc.
 
 4. Refactor PyMilvus error handler.
+
+5. DataNode compaction implementation.
+
+## Enhancement plan
+
+1. If a function has many parameters, change it into a config struct
+
+```go
+type serverOption struct {
+    address string
+    port    int
+    path    string
+    timeout time.Duration
+}
+
+func newOption() *serverOption{ // default parameters
+    return &serverOption{
+        address: "0.0.0.0",
+        port:    8080,
+        path:    "/var/test",
+        timeout: time.Second * 5,
+    }
+}
+
+func server(option *serverOption){}
+```
