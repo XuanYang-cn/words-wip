@@ -1,25 +1,27 @@
 # Week 10.11 - 10.17
 
+## Maybe ....
+
+1. Compilation plans
+
 ## Reminder
 
 1. Don't hardcode CMAKE_INSTALL_LIBDIR
 
+2. Maybe PyMilvus weekly report
+
 ## Todo - Speech PPT and video recording (due 10.20)
 
-## Todo - Review
+## Not in schedule
+**10.14 Wed.**
 
-1. Knowhere compilation review. **DONE**
+- Xiangyu build protobuf failed and let me know about the mess in build-protobuf. Fixed Xiangyu's problem.
+    but need to fix the compilation in protobuf (issue #9876)(pr #9881)
 
-2. Arrow compilation review. **DONE**
+- Zhenshan: DataNode metrics
 
-3. PyMilvus tf/pytorch review.
+- Meeting: Flush redesign
 
-4. PyMilvus typing review.
-
-### Not in schedule
-**10.11 Mon.**
-
-- Reviewed delete implementation (8050)
 
 **10.12 Tue.**
 
@@ -30,9 +32,20 @@
 - Yunmei's issue: Insert 10,000,000 in 10,000 batch, the result num_entites is lesser than 10 million
     - In the middle of the insert, pulsar is out-of-service for a while, and some messages seemed not produced successfully.
 
+**10.11 Mon.**
+
+- Reviewed delete implementation (8050)
+
 ----------------------------
 
-### Arrow compilation review **DONE**
+## Todo - Review
+### PyMilvus review **DONE**
+
+**10.14 Thur.** Reviewed
+
+----------------------------
+
+### [**DONE**] 1. Arrow compilation review
 **10.11 Mon.**
 
 - Figuring out what's this PR and why do we need it. a + b needs in memory arrow
@@ -41,7 +54,7 @@
 
 ----------------------------
 
-### Knowhere compilation review **DONE**
+### [**DONE**] 2. Knowhere compilation review **DONE**
 **10.13 Wed.**
 - Work arround `set(CMAKE_INSTALL_LIBDIR lib)` for centOS compilation, fix later.
 
@@ -81,17 +94,33 @@ and I need to double check on **Ubuntu18.04 and CentOS7**.
     `CMAKE_INSTALL_LIBDIR` is in `GNUInstallDirs` module, need to include the latter before
     using the former.
 
+---------------------------
+
 ## Todo - Create
 
-1. Sum up 7313 problems and sulotions.
+### **[DONE]** 1. Sum up 7313 problems and sulotions.
 
-2. Design DataNode flush task scheduler.
+**This is done by Thursday's meeting of flush redesign**
 
-3. Write PyMilvus contributing doc.
+### **[DONE]** 2. Design DataNode flush task scheduler.
 
-4. Refactor PyMilvus error handler.
+ **This is done by Thursday's meeting of flush redesign**
 
-5. DataNode compaction implementation.
+### 3. Write PyMilvus contributing doc.
+
+### 4. Refactor PyMilvus error handler.
+
+### 5. DataNode compaction implementation
+
+    - FlushManager (congqi)
+    - BinlogReader
+    - BinlogWriter
+
+**10.13 Wed.**
+1. Deep understanding of `io.Reader` interface. Use it in the right way.(9790)
+
+
+---------------------------
 
 ## Enhancement plan
 
