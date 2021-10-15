@@ -13,6 +13,12 @@
 ## Todo - Speech PPT and video recording (due 10.20)
 
 ## Not in schedule
+**10.15 Fri.**
+
+- [Bug]: Data race in DataCoord ut #9929
+
+- Wangting: Benchmark panic for check_pass_param bug (issue #755, pr #756)
+
 **10.14 Wed.**
 
 - Xiangyu build protobuf failed and let me know about the mess in build-protobuf. Fixed Xiangyu's problem.
@@ -39,7 +45,7 @@
 ----------------------------
 
 ## Todo - Review
-### PyMilvus review **DONE**
+### [**DONE**] PyMilvus review
 
 **10.14 Thur.** Reviewed
 
@@ -54,7 +60,7 @@
 
 ----------------------------
 
-### [**DONE**] 2. Knowhere compilation review **DONE**
+### [**DONE**] 2. Knowhere compilation review
 **10.13 Wed.**
 - Work arround `set(CMAKE_INSTALL_LIBDIR lib)` for centOS compilation, fix later.
 
@@ -115,6 +121,13 @@ and I need to double check on **Ubuntu18.04 and CentOS7**.
     - FlushManager (congqi)
     - BinlogReader
     - BinlogWriter
+
+**10.15 Fri.**
+
+1. Update SegmentInfo proto to support stats-binlog and delta-binlog(issue #9922, pr #9925)
+
+**10.14 Thur.**
+1. Meeting after meeting, resiponsibility is roughly clear.
 
 **10.13 Wed.**
 1. Deep understanding of `io.Reader` interface. Use it in the right way.(9790)
