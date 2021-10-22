@@ -9,9 +9,14 @@
 
 2. Maybe PyMilvus weekly report
 
+3. Review support for windows 7706
+
 ## Todo - Speech PPT and video recording (due 10.24)
 
 ## Not in schedule
+**10.21 Thr.**
+- Reply email about pymilvus issue
+
 **10.20 Wed.**
 -  Review PyMilvus: Support Search By ID #752
 
@@ -33,15 +38,21 @@
 
 ## Todo - Create
 ### 1. DataNode compaction implementation
+**10.21 Fri.**
+- Add ut for binlog_io
+
+**10.21 Thr.**
+- Implimenting and add uts for binlog_io
+
 **10.20 Wed.**
-    - Impling compaction
+- Impling compaction
 
 **10.19 Tue.**
-    - The path is much clearer
-    - Communication is a block, but I'll try harder.
+- The path is much clearer
+- Communication is a block, but I'll try harder.
 
 **10.18 Mon.**
-    - Change Deserilize of DeleteCodec (pr 10085)
+- Change Deserilize of DeleteCodec (pr 10085)
 
 ### 2. Fix openBLAS compilation on centOS
 
