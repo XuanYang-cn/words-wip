@@ -25,7 +25,7 @@
 ## Todo - Debug
 ### 1. PyMilvus issue from email
 **10.25 Mon.**
- - Create a issue for this problem (#778)
+ - Create a issue for this problem (issue 778)
 
 ----------------------------
 
