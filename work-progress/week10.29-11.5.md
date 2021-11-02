@@ -2,7 +2,7 @@
 
 ## Not-in-Scheduler
 - [DONE] Closed 6940
-- Separate etcd rootPath and minio rootPath issue 7723
+- [DONE] Improvements: Some adaptation for gcc-10 review pr 7853
 
 ## TODO - stuff
 - Maybe PyMilvus weekly report - Review support for windows 7706
@@ -26,11 +26,16 @@
 ---
 ## TODO - Communicating
 - Milvus doesn't handle partition description now (issue 8668)
+- Separate etcd rootPath and minio rootPath issue 7723
 
 ## Timeline
 
 ### 11.2 Tue.
-- Separate etcd rootPath and minio rootPath issue 7723
+- Restart problem.
+- IndexRootPath -> IndexBinlogRootPath
+- Test minIO inside configs rootPath
+- [DONE] Improvements: Some adaptation for gcc-10 review (pr 7853)
+- [DONE] Separate etcd rootPath and minio rootPath issue 7723
 - [DONE] Closed 6940
 
 ### 11.1 Mon.
