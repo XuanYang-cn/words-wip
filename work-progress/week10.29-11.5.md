@@ -29,19 +29,30 @@
 - [DONE] Separate etcd rootPath and minio rootPath (issue 7723)
 
 ## Tracking - Unmerged PR
-- 11164 lgtm&approve
-- 11102 lgtm&approve
+- 11255 lgtm&approve
+- [DONE] 11236 lgtm&approve
+- [DONE] 11168 lgtm&approve
+- [DONE] 11102 lgtm&approve
 - [DONE] 7853 approve
 
 ## Timeline
+### 11.5 Fri.
+- Clear and Unify BaseKV interface behaviour (issue 11313)
+
+### 11.4 Thr.
+- Test minIO inside configs rootPath (issue 11237)
+    - minIO tests (pr 11255)
+    - etcd
+    - rocksDB
+
+- [DONE] IndexRootPath -> IndexBinlogRootPath (pr 11236)
+- [DONE for now] msgStream ut timeout (issue 11146 pr 11164)
+
 ### 11.3 Wed.
-- msgStream ut timeout (issue 11146 pr 11164)
-- IndexRootPath -> IndexBinlogRootPath
-- Test minIO inside configs rootPath
-- MiniKube all day to find problems of (issue 8109)
+- [DONE] MiniKube all day to find problems of (issue 8109) Not reproduceable, closed
 
 ### 11.2 Tue.
-- Debug restart problem  (issue 11098, pr 11102)
+- [DONE] Debug restart problem  (issue 11098, pr 11102)
 - [DONE] Improvements: Some adaptation for gcc-10 review (pr 7853)
 - [DONE] Separate etcd rootPath and minio rootPath (issue 7723)
 - [DONE] Closed (issue 6940)
