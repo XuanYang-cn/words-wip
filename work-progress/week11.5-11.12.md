@@ -4,6 +4,7 @@
 
 ## TODO - stuff
 - Review support for windows 7706
+- Review Support Search By ID pr 752
 
 ---
 ## TODO - bug fix
@@ -20,12 +21,14 @@
     - etcd
     - rocksDB
 5. DropCollection handles resources (issue 11426)
-    - Drop collection Doc design
-    - Drop collection Implementation
-7. Merge compaction PR 11353
+    - Drop collection Doc design (pr 11450)
+    - Drop collection Implementation (pr 11552)
+7. [DONE] Edit compaction PR 11353
 
 ---
 ## TODO - pymilvus operation
+- `hello_milvus.py`
+- style of pymilvus docstring
 
 ---
 ## TODO - Communicating
@@ -33,13 +36,18 @@
 
 ## Tracking - Unmerged PR
 - [DONE] 11255 lgtm&approve
-- 11353 lgtm&approve
+- [DONE] 11353 lgtm&approve
 
 ## Timeline
-### 11.8 Mon.
-- Merge compaction PR 11353
+### 11.9 Tue.
+- `hello_milvus.py`
 - DropCollection handles resources (issue 11426)
-    - Drop collection Doc design
-    - Drop collection Implementation
+    - Drop collection Doc design (pr 11450)
+    - Drop collection Implementation (pr 11552)
 - Clear and Unify BaseKV interface behaviour (issue 11313)
     - Fix memoryKV load and basetable (pr 11423)
+- [DONE] Enhance pymilvus proto gen procedure (pr 806)
+- [DONE] Add pymilvus compaction (pr 807)
+
+### 11.8 Mon.
+- [DONE] Edit compaction PR 11353
