@@ -33,14 +33,22 @@
 ---
 ## TODO - Communicating
 - Milvus doesn't handle partition description now (issue 8668)
+- [DONE] Answer emailing questions
 
 ## Tracking - Unmerged PR
 - [DONE] 11255 lgtm&approve
 - [DONE] 11353 lgtm&approve
+- 811
+- pr 11552
+- 11450
+- 11423
 
 ## Timeline
-### 11.9 Tue.
+### 11.11 Thr.
 - `hello_milvus.py`
+- Make scheme print nicer (pr 811)
+
+### 11.9 Tue.
 - DropCollection handles resources (issue 11426)
     - Drop collection Doc design (pr 11450)
     - Drop collection Implementation (pr 11552)
