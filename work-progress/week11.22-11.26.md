@@ -6,14 +6,15 @@
 - Review support for windows 7706
 - Review Support Search By ID pr 752
 - Minio cleaning config
-- [DONE] Review pr 789
 
 ---
 ## TODO - bug fix
 - PyMilvus Socket operation on non-socket (issue 778)
 - PyMilvus connection pool is not useful (ref: grpc issue 20985)
-- [DONE] The num_entities remains the same after delete and compact (issue 11757)
-    - Fix compaction bug(pr 11784)
+- Debug yesterday's CI hangs bug (issue 12075)
+- Debug Distributed CI hangs (issue 11915)
+- Debug DN 1000% CPU in CI
+- [DONE] Debug Load collection failed after compact and create index (issue 12146 pr 12204)
 
 ---
 ## TODO - enhancement
@@ -25,11 +26,12 @@
     - etcd
     - rocksDB
 5. [Enhancement]: Separating knowhere from milvus project (issue 11995)
+6. Optimize compilation of Arrow issue 12284
 
 ---
 ## TODO - pymilvus operation
 - [DONE] `hello_milvus.py`, pr 818
-- Next meeting agenda
+- [WIP] PyMilvus sig meeting enhancement agenda
 
 ---
 ## TODO - Communicating
@@ -37,28 +39,22 @@
 
 ## Tracking - Unmerged PR
 - 11423
-- 818
-- [DONE] 11784
-- [DONE] 11984
-- [DONE] 12071
+- [DONE] 12283
+- [DONE] 818
+- [DONE] 12204
 
 ## Timeline
-**11.19 Fri.**
-- [WIP] Debug 12075, yesterdays CI hangs bug
+**11.26 Fri.**
+- [DONE] Debug Insert data fails when etcd pod recovered running status after been killed (issue 10171)
+**11.25 Thi.**
+- [DONE] The search results are inconsistent before and after compaction(issue 12241)
+- [DONE] Make DN Ut coverage to 90% (issue 7684, 8058, pr 12283)
 
-**11.18 Thr.**
-- [WIP] PyMilvus sig meeting enhancement agenda
-- [DONE] QueryCoord Ut DataRace (issue 12070, pr 12071)
+**11.24 Wed.**
+- [DONE] DN GC collection release unexpected flowgraph (issue 12249, pr 12258)
 
-**11.17 Wed.**
-- [DONE] Fixes: Load collection failed after compact and merge segments (issue 11970, pr 11984)
-- [DONE] Help Debug Milvus is crashed during CI (issue 11987)
+**11.23 Tue.**
 
-
-**11.16 Tue.**
+**11.22 Mon.**
 - [DONE] `hello_milvus.py`, pr 818
-- Debug Distributed CI hangs (issue 11915)
-
-**11.15 Mon.**
-- [DONE] The num_entities remains the same after delete and compact (issue 11757)
-    - [DONE] Fix compaction bug(pr 11784)
+- [DONE] Debug Load collection failed after compact and create index (issue 12146 pr 12204)
