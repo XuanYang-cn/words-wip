@@ -23,7 +23,13 @@
 - 11423
 
 ## Timeline - InProgress
-[11.29 Mon.] Openblas built by Milvus is not installed properly (issue 8143)
+[12.01 Wed.] PyMilvus seperate orm and Milvus client, and mark them as dup.
 
 ## Timeline - DONE
+[12.01 Wed.] Debug The insert time of first run is too long and after scale up, a search time is very large (issue 12081)
+[11.30 Tue.] 11423 all configs not in helm will panic[fix 2]
+[11.30 Tue.] Investigate how to make git-rivision into a certain python package
+[11.30 Tue.] Try to reproducing issue 9997 - No Progress
+[11.29 Mon.] Debug night CI 234 stuck problem -> same problem as issue 12259
 [11.29 Mon.] remove pymilvus hacktoberfest banner
+[11.29 Mon.] Openblas built by Milvus is not installed properly (issue 8143, closed)
