@@ -18,20 +18,19 @@
 6. Optimize compilation of Arrow issue 12284
 7. Milvus doesn't handle partition description now (issue 8668)
 
-1. Insert slow 12701 定位问题
-2. 问题排查工具的文档 -> dlv，pprof
 3. Pymivus api mark as deprecated
 4. Ut with thirdparty services should be restricted inside the config rootPath scope
 5. 推进 BaseKV enhancement #11313
 
 ## Tracking - Unmerged PR
 - 11423
-- 12710
 
 ## Timeline - InProgress
+1. Insert slow 12701 定位问题
 [Bug]: [benchmark][standalone] load raise error: The specified key does not exist (issue 13250)
 - No Progress
-6. pymilvus alias, partly done.
+2. 问题排查工具的文档 -> dlv，pprof
 
 ## Timeline - DONE
 [12-13] issue 12450
+[12-14] move alias APIs from Collection to utility of pymilvus. (pr 841)
