@@ -1,17 +1,17 @@
-# How to debug Milvus
+# How to profile in Go?
 
-- Logs
-- Inspect meta
-- Profiling Golang/CPP
+## How to choose tools for profiling?
 
-## Three different types of profiling
-### 1. CPU profiling
-### 2. Memory profiling
-### 3. Tracing
-### 4. How to choose?
+**PProf:** CPU, Mem, Goroutinue Blocking, Graphics, Goroutines, Mutexes
 
-## Tools
-### 1. go pprof
+**Trace:** Goroutine creation/blocking/unblocking, syscall enter/exit/block, GC-related events, changes of heap size, processor start/stop, etc.
+
+**dlv:** Single step debugging
+
+**gdb:** Single step debugging
+
+## Basic Usages of Tools
+### 1. PProf
 
 #### 1. How to generate profiling files?
 
@@ -66,6 +66,50 @@ func main() {
 
 **For a long-running server, use `net/http/pprof`**
 
+> ref: https://pkg.go.dev/net/http/pprof
+
+Adding these lines in your  main function:
+```golang
+import (
+    "fmt"
+    _ "net/http/pprof"
+    "net/http"
+)
+
+go func(){
+    fmt.Println(http.ListenAndServe("localhost:9876", nil))
+}()
+```
+
+Then use pprof tool to look at the heap profile:
+```
+go tool pprof http://localhost:9876/debug/pprof/heap
+```
+
+Or to look at a 30-second CPU profile:
+```
+go tool pprof http://localhost:9876/debug/pprof/profile?seconds=30
+```
+
+Or to look at the goroutine blocking profile, after calling `runtime.SetBolckProfileRate` in your program:
+```
+go tool pprof http://localhost:9876/debug/pprof/block
+```
+
+Or to look at the holders of contended mutexes, after calling `runtime.SetMutexProfileFraction` in your program:
+```
+go tool pprof http://localhost:9876/debug/pprof/mutex
+```
+
+The package also exports a handler that serves execution trace data fro the "go tool trace" command. To collect a
+5-second execution trace:
+```
+wget -O trace.out http://localhost:9876/debug/pprof/trace?seconds=5
+go tool trace trace.out
+```
+
+To view all avaliable profiles, open `http://localhost:9876/debug/pprof` in your browser.
+
 #### 2. How to use the generated profiling files?
 
 **Visulization:**
@@ -95,7 +139,7 @@ Type: cpu
 Time: Dec 17, 2021 at 4:07pm (CST)
 Duration: 301.42ms, Total samples = 50ms (16.59%)
 Entering interactive mode (type "help" for commands, "o" for options)
-(pprof) 
+(pprof)
 ```
 
 Check top10 cum:
@@ -116,8 +160,62 @@ Showing top 10 nodes out of 23
          0     0% 40.00%       30ms 60.00%  encoding/json.structEncoder.encode
 ```
 
+**Comparation:**
 
-### 2. go trace
+```shell
+$ curl -s http://localhost:9876/debug/pprof/heap > first.heap
+
+# sometime later
+$ curl -s http://localhost:9876/debug/pprof/heap > second.heap
+```
+
+Then you can compare them by:
+```shell
+go tool pprof -base first.heap second.heap
+```
+
+Please see [pprof README](https://github.com/google/pprof/blob/master/doc/README.md) for more `pprof` details.
+
+### 2. Trace
+
+#### 1. How to generate trace files?
+
+**`go test -trace`**
+
+Genetage a trace file with `go test`:
+```
+go test -trace trace.out pkg
+```
+
+**`runtime/trace.Start`**
+
+**`net/http/pprof package`**: see above.
+
+#### 2. How to use trace file?
+
+View trace in web browser(**NOET: only tested on `Chrome/Chrominum`**):
+```
+go tool trace trace.out
+```
+
+Generate a pprof-like profile from the trace:
+```
+go tool trace -pprof=TYPE trace.out > TYPE.pprof
+```
+
+Supported profile tyes are:
+```
+- net: network blocking profile
+- sync: synchronization blocking profile
+- syscall: syscall blocking profile
+- sched: scheduler latency profile
+```
+
+Then you can ues the pprof tool to analyze the profile:
+```
+go tool pprof TYPE.pprof
+```
+
 ### 2. dlv
 ### 3. gdb
 
@@ -125,21 +223,21 @@ Showing top 10 nodes out of 23
 
 **References:**
 
-[1] Doc of go testing flags. *https://pkg.go.dev/cmd/go#hdr-Testing_flags* 
+[1] Doc of go testing flags. *https://pkg.go.dev/cmd/go#hdr-Testing_flags*
 
-[2] Doc of `net/http/pprof`. *https://pkg.go.dev/net/http/pprof* `go doc net/http/pprof` 
+[2] Doc of `net/http/pprof`. *https://pkg.go.dev/net/http/pprof* `go doc net/http/pprof`
 
-[3] Doc of `runtime/pprof`. *https://pkg.go.dev/runtime*. `go doc runtime/pprof` 
+[3] Doc of `runtime/pprof`. *https://pkg.go.dev/runtime*. `go doc runtime/pprof`
 
-[4] Full useage of tool `pprof`. *https://github.com/google/pprof/blob/master/doc/README.md* 
+[4] Full useage of tool `pprof`. *https://github.com/google/pprof/blob/master/doc/README.md*
 
 [5] Go blog: Profiling Go Programs. *https://go.dev/blog/pprof*
 
-[6] Doc of `cmd/trace`. *https://pkg.go.dev/cmd/trace*
+[6] Doc of `cmd/trace`. *https://pkg.go.dev/cmd/trace*. `go doc cmd/trace`
 
-[7] Doc of `cmd/pprof`. *https://pkg.go.dev/cmd/pprof*
+[7] Doc of `cmd/pprof`. *https://pkg.go.dev/cmd/pprof*. `go doc cmd/pprof`
 
-[8] Doc of `runtime/trace`. *https://pkg.go.dev/runtime/trace*
+[8] Doc of `runtime/trace`. *https://pkg.go.dev/runtime/trace* `go doc runtim/trace`
 
 [9] GopherCon 2017: An Introduction to go tool trace. *https://about.sourcegraph.com/go/an-introduction-to-go-tool-trace-rhys-hiltner/*
 
