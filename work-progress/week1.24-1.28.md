@@ -1,4 +1,4 @@
-# Week 1.17 - 1.21
+# Week 1.24 - 1.28
 
 ---
 ## TODO - bug fix
@@ -22,16 +22,8 @@
     The producers didn't recover properly
 - no `_partition_name` in partition.py(issue 860)
 
-
 ## Timeline - In Progress
 
 ## Timeline - DONE
-**PyMilvus:**
-- PyMilvus Docs on Milvus.io
-3. DataNode unittest datarace (issue 15241, pr 15267)
-2. Meetings on how to solve issue: losing requirements version range (issue 850, pr 863 by DragonDriver)
-
-1. Bugs fixes**
-- Connect get TypeError: __init__() missing 1 required positional argument: 'message' (issue 15236, pr 866)
-- Test cases fail reporting `'GrpcHandler' object has no attribute 'wait_for_loading_partitions_complete'`
-(issue 15235, pr 867, pr15244)
+- Update PyMilvus tutorial.rst
+- Release PyMilvus 2.0.0
